@@ -91,7 +91,7 @@ async function calc() {
   const S1 = Number(data.S1);
   const S2 = Number(data.S2);
 
-  const result = (B*(S2/S1)-O)/(S2*Math.exp(-0.05*0.95));
+  const result = (B*(S2/S1)-O)/(S2*Math.exp(-r*0.95));
 
   document.getElementById("S1").textContent = S1;
   document.getElementById("S2").textContent = S2;
