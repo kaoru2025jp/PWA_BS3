@@ -55,7 +55,7 @@ button {
   <input id="O" type="number" placeholder="O">
   <input id="T1" type="number" placeholder="T1">
   <input id="T2" type="number" placeholder="T2">
-  <input id="r" type="number" step="0.01" value="-1.0">
+  <input id="r" type="number" placeholder="r">
 
 </div>
 
@@ -78,7 +78,7 @@ async function calc() {
   const O = Number(document.getElementById("O").value);
   const T1 = Number(document.getElementById("T1").value);
   const T2 = Number(document.getElementById("T2").value);
-  const r = Number(document.getElementById("r").value) || 0;
+  const r = Number(document.getElementById("r").value);
 
 
   const res = await fetch(GAS_URL, {
