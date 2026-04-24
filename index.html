@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PWA</title>
+
+<style>
+body {
+  font-family: sans-serif;
+  max-width: 400px;
+  margin: auto;
+  padding: 16px;
+  background: #f5f5f5;
+}
+
+h2 {
+  text-align: center;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  padding: 12px;
+  font-size: 16px;
+}
+
+button {
+  padding: 14px;
+  font-size: 16px;
+  background: #333;
+  color: white;
+  border: none;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 12px;
+  background: white;
+  border: 1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<h2>計算</h2>
+
+<div class="input-box">
+  <input id="B" type="number" placeholder="B">
+  <input id="O" type="number" placeholder="O">
+  <input id="T1" type="number" placeholder="T1">
+  <input id="T2" type="number" placeholder="T2">
+</div>
+
+<button onclick="calc()">計算</button>
+
+<div class="result">
+  <div>T1: <span id="T1">-</span></div>
+  <div>T2: <span id="T2">-</span></div>
+  <hr>
+  <div>result: <span id="result">-</span></div>
+</div>
+
+<script>
+
+const GAS_URL = "https://script.google.com/macros/s/AKfycby3p9KLSlESfF-2BmPv7B4n995E2Gu4pNjhpitk-Y3Zfen6jvIAdbe63NTmajSxBbgz/exec"
+
+async function calc() {
+
+  const B = Number(document.getElementById("B").value);
+  const O = Number(document.getElementById("S").value);
+  const T1 = Number(document.getElementById("T1").value);
+  const T2 = Number(document.getElementById("T2").value);
+
+  const res = await fetch(GAS_URL, {
+    method: "POST",
+    body: JSON.stringify({ B, O, T1, T2 })
+  });
+
+  const data = await res.json();
+
+  const S1 = Number(data.S1);
+  const S2 = Number(data.S2);
+
+  const result = (B*(S2/S1)-O1)/(S2*exp(-0.05*0.95));
+
+  document.getElementById("S1").textContent = S1;
+  document.getElementById("S2").textContent = S2;
+  document.getElementById("result").textContent = result;
+}
+
+</script>
+
+</body>
+</html>
