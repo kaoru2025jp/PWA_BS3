@@ -73,7 +73,7 @@ const GAS_URL = "https://script.google.com/macros/s/AKfycbwIundUa2w_ZijiBK0d5Krf
 async function calc() {
 
   const B = Number(document.getElementById("B").value);
-  const O = Number(document.getElementById("S").value);
+  const O = Number(document.getElementById("O").value);
   const T1 = Number(document.getElementById("T1").value);
   const T2 = Number(document.getElementById("T2").value);
 
@@ -87,7 +87,7 @@ async function calc() {
   const S1 = Number(data.S1);
   const S2 = Number(data.S2);
 
-  const result = (B*(S2/S1)-O1)/(S2*exp(-0.05*0.95));
+  const result = (B*(S2/S1)-O)/(S2*Math.exp(-0.05*0.95));
 
   document.getElementById("S1").textContent = S1;
   document.getElementById("S2").textContent = S2;
